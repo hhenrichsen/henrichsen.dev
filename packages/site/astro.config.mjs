@@ -8,11 +8,15 @@ import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-s
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
   adapter: cloudflare(),
   site: "https://henrichsen.dev",
+  build: {
+    format: "file",
+  },
   markdown: {
     rehypePlugins: [
       rehypeSlug,
@@ -49,5 +53,6 @@ export default defineConfig({
     }),
     mdx(),
     sitemap(),
+    pagefind(),
   ],
 });

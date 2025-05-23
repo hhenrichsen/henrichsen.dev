@@ -1,0 +1,22 @@
+---
+import Search from "astro-pagefind/components/Search";
+import BaseLayout from "../components/core/BaseLayout.astro";
+---
+
+<BaseLayout title="Search">
+  <Search
+    id="search"
+    className="pagefind-ui"
+    uiOptions={{ showImages: false }}
+  />
+</BaseLayout>
+
+<style>
+  :global(:root) {
+    --pagefind-ui-background: var(--mantle);
+    --pagefind-ui-text: var(--text);
+  }
+  .pagefind-ui {
+    width: 100%;
+  }
+</style>

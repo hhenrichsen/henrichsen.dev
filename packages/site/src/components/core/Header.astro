@@ -1,6 +1,6 @@
 ---
 import DarkToggle from "./DarkToggle.astro";
-import { Circle } from "astro-feather-icons";
+import { Circle, Search } from "astro-feather-icons";
 ---
 
 <header transition:persist="" transition:name="header">
@@ -10,6 +10,9 @@ import { Circle } from "astro-feather-icons";
       <h2>Hunter Henrichsen</h2>
     </a>
     <div class="spacer-h"></div>
+    <a href="/search">
+      <Search class="icon-2" />
+    </a>
     <DarkToggle />
     <Circle class="icon-2" />
   </div>
