@@ -7,7 +7,8 @@ import "../../styles/global.css";
 import "../../../../../fonts/fonts.css";
 import { ClientRouter } from "astro:transitions";
 
-const { title } = Astro.props;
+const { title, description = "", image = "og.png" } = Astro.props;
+const img = new URL("/img/" + image || "og.png", Astro.url).toString();
 ---
 
 <html
@@ -20,7 +21,22 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <ClientRouter />
+    <meta name="description" content={description} />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://henrichsen.dev" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={img} />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="henrichsen.dev" />
+    <meta property="twitter:url" content="https://henrichsen.dev" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={img} />
     {
       title ? (
         <title>{title} | Hunter Henrichsen</title>
@@ -28,6 +44,7 @@ const { title } = Astro.props;
         <title>Hunter Henrichsen</title>
       )
     }
+    <ClientRouter />
   </head>
   <body>
     <Header />

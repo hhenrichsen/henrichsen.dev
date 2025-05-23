@@ -7,7 +7,7 @@ const { frontmatter, post } = Astro.props;
 const readingTime = getReadingTime(post.body);
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} image={frontmatter.image}>
   <article class="container shadow">
     <a href={`/${frontmatter.type}`}>{`< ${frontmatter.type}`}</a>
     <h1>{frontmatter.title}</h1>
