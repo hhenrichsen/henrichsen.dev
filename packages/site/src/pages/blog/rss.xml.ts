@@ -1,18 +1,11 @@
 import rss from "@astrojs/rss";
+import type { AstroGlobal } from "astro";
 import { getCollection } from "astro:content";
 
-export async function GET(context) {
-  const collections = await Promise.all([
-    getCollection("blog"),
-    getCollection("scraps"),
-    getCollection("lectures"),
-    getCollection("fiction"),
-    getCollection("reading"),
-    getCollection("guides"),
-  ]);
+export async function GET(context: AstroGlobal) {
+  const collections = await getCollection("blog");
 
   const items = collections
-    .flatMap((collection) => collection)
     .filter((post) => !post.data.draft)
     .map((post) => ({
       title: post.data.title,
@@ -23,9 +16,9 @@ export async function GET(context) {
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
   return rss({
-    title: "Hunter Henrichsen",
+    title: "Blog | Hunter Henrichsen",
     description: "A collection of unorganized thoughts and ideas",
-    site: context.site,
+    site: context.site ?? new URL("https://henrichsen.dev"),
     items,
   });
 }

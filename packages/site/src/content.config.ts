@@ -1,6 +1,6 @@
 import { glob } from "astro/loaders";
 // Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection, getCollection } from "astro:content";
 // Define a `loader` and `schema` for each collection
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/blog" }),
@@ -87,3 +87,12 @@ const scraps = defineCollection({
 
 // Export a single `collections` object to register your collection(s)
 export const collections = { blog, guides, fiction, lectures, reading, scraps };
+
+export async function getAllContent() {
+  const allContent = await Promise.all(
+    Object.keys(collections).map((collection) =>
+      getCollection(collection as keyof typeof collections)
+    )
+  );
+  return allContent.flat();
+}
