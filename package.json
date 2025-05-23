@@ -1,0 +1,7 @@
+{
+  "name": "henrichsen.dev",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix packages/animations install && npm --prefix packages/site install && npm --prefix packages/animations run build && npm --prefix packages/site run build"
+  }
+}
