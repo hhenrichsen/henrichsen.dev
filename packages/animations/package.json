@@ -4,7 +4,8 @@
   "scripts": {
     "start": "vite",
     "serve": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "watch": "vite build --watch"
   },
   "dependencies": {
     "@hhenrichsen/canvas-commons": "^0.10.2",

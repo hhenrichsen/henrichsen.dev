@@ -2,6 +2,11 @@
   "name": "henrichsen.dev",
   "private": true,
   "scripts": {
-    "build": "npm --prefix packages/animations install && npm --prefix packages/site install && npm --prefix packages/animations run build && npm --prefix packages/site run build"
+    "inst": "npm --prefix packages/animations install && npm --prefix packages/site install",
+    "build": "npm run inst && npm --prefix packages/animations run build && npm --prefix packages/site run build",
+    "dev": "concurrently -n \"animations,site\" -c \"blue.bold,green.bold\" \"npm --prefix packages/animations run watch\" \"npm --prefix packages/site run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
