@@ -43,6 +43,7 @@ body {
   width: 100%;
   margin: 0;
   display: flex;
+  overscroll-behavior-y: none;
   flex-direction: column;
 }
 
