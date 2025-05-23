@@ -5,15 +5,22 @@ import Footer from "./Footer.astro";
 import "../../styles/catppuccin.css";
 import "../../styles/global.css";
 import "../../../../../fonts/fonts.css";
+import { ClientRouter } from "astro:transitions";
 
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html
+  lang="en"
+  transition:name="root"
+  transition:animate="none"
+  transition:persist=""
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
     {
       title ? (
         <title>{title} | Hunter Henrichsen</title>
@@ -25,7 +32,7 @@ const { title } = Astro.props;
   <body>
     <Header />
 
-    <main>
+    <main transition:animate="slide">
       <slot />
     </main>
 
@@ -41,3 +48,19 @@ const { title } = Astro.props;
     padding: 1rem;
   }
 </style>
+
+<script>
+  document.addEventListener("astro:before-swap", (e) => {
+    const theme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+
+    if (theme === "dark") {
+      e.newDocument.documentElement.dataset.theme = "catppuccin-mocha";
+      e.newDocument.documentElement.classList.add("dark");
+    } else {
+      e.newDocument.documentElement.dataset.theme = "catppuccin-latte";
+      e.newDocument.documentElement.classList.remove("dark");
+    }
+  });
+</script>

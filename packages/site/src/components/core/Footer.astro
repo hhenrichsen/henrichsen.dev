@@ -12,7 +12,7 @@ import AstroLogo from "./AstroLogo.astro";
 const { class: className } = Astro.props;
 ---
 
-<footer class={className}>
+<footer class={className} transition:persist="" transition:name="footer">
   <div id="socials" class="container row gaps">
     <a href="/rss.xml"><Rss class="icon-2" /></a>
     <a href="https://github.com/hhenrichsen" rel="me"
