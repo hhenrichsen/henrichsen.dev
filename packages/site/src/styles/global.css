@@ -21,6 +21,10 @@
   background-color: var(--mantle);
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
+  scroll-behavior: smooth;
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 :root.dark {
@@ -156,4 +160,13 @@ td {
 
 tr {
   border-bottom: 1px solid var(--text);
+}
+
+.heading-anchor {
+  margin-left: 0.5rem;
+  color: rgb(var(--text-rgb) / 0.5);
+}
+
+.heading-anchor:hover {
+  color: rgb(var(--text-rgb) / 1);
 }

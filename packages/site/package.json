@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.5.3",
     "@astrojs/mdx": "^4.2.6",
+    "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
     "@astrojs/svelte": "^7.1.0",
@@ -28,6 +29,8 @@
     "katex": "^0.16.22",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
     "sass-embedded": "^1.89.0",
     "svelte": "^5.33.0"
   }
