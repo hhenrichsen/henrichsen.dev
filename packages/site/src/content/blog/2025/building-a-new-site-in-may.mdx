@@ -7,23 +7,23 @@ type: "blog"
 
 import DarkToggle from "../../../components/core/DarkToggle.astro";
 import Animation from "../../../components/mdx/Animation.astro";
-import ExampleAnimationUrl from "@henrichsen.dev/animations/dist/src/example.project.js?url"
+import ExampleAnimationUrl from "@henrichsen.dev/animations/dist/src/example.project.js?url";
 
-*All because someone asked for an RSS feed...*
+_All because someone asked for an RSS feed..._
 
-Things picked up for me a lot in April, so it's now May. I've been slowly 
-chugging along on my [blog challenge](/blog/2025/april-blog-challenge), and I've 
+Things picked up for me a lot in April, so it's now May. I've been slowly
+chugging along on my [blog challenge](/blog/2025/april-blog-challenge), and I've
 finally made some progress. One of my friends asked me to add an RSS feed to my
 site, and that was the final straw that pushed me to sit down and do the work.
 
-I decided to switch from Hugo to Astro, since I 
+I decided to switch from Hugo to Astro, since I
 couldn't quite get the features in Hugo that I wanted, especially to get
 animations working in an ergonomic way. Plus, [Maggie Appleton's site](https://maggieappleton.com/)
 is built with Astro, and I look up to her in a lot of ways.
 
 ## Animations
 
-One of the things I wanted to do was build some new features into my site and 
+One of the things I wanted to do was build some new features into my site and
 update the design a little bit. For example, one thing I wanted to be able to do
 was to embed animations from Motion Canvas in my posts:
 
@@ -98,7 +98,6 @@ const { src, caption, variables, auto = true, ...props } = Astro.props;
         motionCanvasPlayer.getAttribute("variables") || "{}"
       );
       const newVariables = { ...oldVariables, ...values };
-      console.log(newVariables);
       motionCanvasPlayer.setAttribute(
         "variables",
         JSON.stringify(newVariables)
@@ -168,12 +167,11 @@ export function getColors(): Record<
     })
   );
 }
-
 ```
 
-*Shoutout to [Waldi's work here](https://github.com/WaldemarLehner/astro-motion-canvas-poc/)
+_Shoutout to [Waldi's work here](https://github.com/WaldemarLehner/astro-motion-canvas-poc/)
 for the initial implementation of the Motion Canvas player in Astro. Mine works
-a little differently, but it's still based on his work.*
+a little differently, but it's still based on his work._
 
 I'll likely end up making my own player component eventually, but this works for
 most of what I want to do for now.
@@ -181,9 +179,9 @@ most of what I want to do for now.
 ## Code and Design
 
 If you haven't used the old site, I also took the opportunity to update the
-design to use the Cappuccin colors, and decided to throw in the towel and use 
-a [third party library for code blocks](https://expressive-code.com/), which 
-has improved the terminal and code block experience a lot, I think. It also 
+design to use the Cappuccin colors, and decided to throw in the towel and use
+a [third party library for code blocks](https://expressive-code.com/), which
+has improved the terminal and code block experience a lot, I think. It also
 keeps the markdown content I use a lot simpler, which is nice since I do most of
 my composition in Obsidian.
 
