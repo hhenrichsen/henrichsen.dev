@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import astroExpressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
@@ -12,7 +11,6 @@ import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: cloudflare(),
   site: "https://henrichsen.dev",
   build: {
     format: "file",
