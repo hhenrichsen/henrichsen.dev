@@ -88,11 +88,13 @@ const scraps = defineCollection({
 // Export a single `collections` object to register your collection(s)
 export const collections = { blog, guides, fiction, lectures, reading, scraps };
 
-export async function getAllContent() {
+export async function getAllContent(drafts = false) {
   const allContent = await Promise.all(
     Object.keys(collections).map((collection) =>
       getCollection(collection as keyof typeof collections)
     )
   );
-  return allContent.flat();
+  return drafts
+    ? allContent.flat()
+    : allContent.flat().filter((post) => !post.data.draft);
 }
