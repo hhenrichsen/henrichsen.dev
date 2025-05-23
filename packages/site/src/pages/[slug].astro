@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import Post from "../components/post/Post.astro";
+
+export async function getStaticPaths() {
+  const collections = await Promise.all([
+    getCollection("guides"),
+    getCollection("blog"),
+    getCollection("reading"),
+    getCollection("lectures"),
+    getCollection("fiction"),
+    getCollection("scraps"),
+  ]);
+
+  return collections
+    .flat()
+    .filter((post) => post.data.static)
+    .map((post) => ({
+      params: { slug: post.data.static },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+---
+
+<Post post={post} />

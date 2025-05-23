@@ -13,6 +13,7 @@ const blog = defineCollection({
     description: z.optional(z.string()),
     image: z.optional(z.string()),
     type: z.enum(["blog"]),
+    static: z.optional(z.string()),
   }),
 });
 
@@ -28,6 +29,7 @@ const guides = defineCollection({
     growth: z.enum(["sprout", "bud", "bloom"]),
     image: z.optional(z.string()),
     draft: z.boolean().optional().default(false),
+    static: z.optional(z.string()),
   }),
 });
 
@@ -40,6 +42,7 @@ const fiction = defineCollection({
     image: z.optional(z.string()),
     type: z.enum(["fiction"]),
     draft: z.boolean().optional().default(false),
+    static: z.optional(z.string()),
   }),
 });
 
@@ -52,6 +55,7 @@ const lectures = defineCollection({
     image: z.optional(z.string()),
     type: z.enum(["lecture"]),
     draft: z.boolean().optional().default(false),
+    static: z.optional(z.string()),
   }),
 });
 
@@ -64,6 +68,7 @@ const reading = defineCollection({
     draft: z.boolean().optional().default(false),
     type: z.enum(["reading"]),
     image: z.optional(z.string()),
+    static: z.optional(z.string()),
   }),
 });
 
@@ -76,6 +81,7 @@ const scraps = defineCollection({
     draft: z.boolean().optional().default(false),
     type: z.enum(["scrap"]),
     image: z.optional(z.string()),
+    static: z.optional(z.string()),
   }),
 });
 

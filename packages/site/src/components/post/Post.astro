@@ -2,9 +2,12 @@
 import BaseLayout from "../core/BaseLayout.astro";
 import Date from "../core/Date.astro";
 import { getReadingTime } from "../../util/ReadingTime";
-const { frontmatter, post } = Astro.props;
+import { render } from "astro:content";
+const { post } = Astro.props;
 
+const frontmatter = post.data;
 const readingTime = getReadingTime(post.body);
+const { Content } = await render(post);
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description} image={frontmatter.image}>
@@ -28,7 +31,7 @@ const readingTime = getReadingTime(post.body);
         <span class="reading-time">{readingTime}</span>
       )}
     </div>
-    <slot />
+    <Content />
   </article>
 </BaseLayout>
 
