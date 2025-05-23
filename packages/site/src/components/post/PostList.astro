@@ -4,6 +4,7 @@ import BaseLayout from "../core/BaseLayout.astro";
 import Date from "../core/Date.astro";
 import ScreenGrid from "../layout/ScreenGrid.astro";
 import HoverItem from "../layout/HoverItem.astro";
+import { getReadingTime } from "../../util/ReadingTime";
 const { posts, title } = Astro.props;
 ---
 
@@ -23,6 +24,8 @@ const { posts, title } = Astro.props;
                 <span class="separator">⋄</span>
               )}
               <Date date={post.data.date} />
+              <span class="separator">⋄</span>
+              <span class="reading-time">{getReadingTime(post.body)}</span>
             </div>
         </HoverItem>
       ))

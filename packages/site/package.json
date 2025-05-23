@@ -26,6 +26,8 @@
     "date-fns": "^4.1.0",
     "feather-icons": "^4.29.2",
     "katex": "^0.16.22",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
     "sass-embedded": "^1.89.0",
     "svelte": "^5.33.0"
   }

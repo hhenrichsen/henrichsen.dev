@@ -1,7 +1,10 @@
 ---
 import BaseLayout from "../core/BaseLayout.astro";
 import Date from "../core/Date.astro";
-const { frontmatter } = Astro.props;
+import { getReadingTime } from "../../util/ReadingTime";
+const { frontmatter, post } = Astro.props;
+
+const readingTime = getReadingTime(post.body);
 ---
 
 <BaseLayout title={frontmatter.title}>
@@ -19,6 +22,10 @@ const { frontmatter } = Astro.props;
           <span class="separator">⋄</span>
           <span class="updated">last updated <Date date={frontmatter.updated} /></span>
         </>
+      )}
+      {readingTime && (
+        <span class="separator">⋄</span>
+        <span class="reading-time">{readingTime}</span>
       )}
     </div>
     <slot />
