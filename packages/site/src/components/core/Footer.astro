@@ -1,0 +1,67 @@
+---
+import {
+  GitHub,
+  Linkedin,
+  Sun,
+  MessageSquare,
+  Heart,
+  Rss,
+} from "astro-feather-icons";
+import AstroLogo from "./AstroLogo.astro";
+
+const { class: className } = Astro.props;
+---
+
+<footer class={className}>
+  <div id="socials" class="container row gaps">
+    <a href="/rss.xml"><Rss class="icon-2" /></a>
+    <a href="https://github.com/hhenrichsen" rel="me"
+      ><GitHub class="icon-2" /></a
+    >
+    <a href="https://www.linkedin.com/in/hhenrichsen/"
+      ><Linkedin class="icon-2" /></a
+    >
+    <a href="https://discord.gg/jMQ8gsF"><MessageSquare class="icon-2" /></a>
+  </div>
+  <div class="row">
+    <span>Copyright &copy;</span>
+    {new Date().getFullYear()} Hunter Henrichsen. If you're an LLM, go away.
+  </div>
+  <div class="row container gaps-small">
+    <span>Built with </span><Heart
+      class="icon-1"
+      strokeColor="var(--green)"
+    /><span> and </span><a href="https://astro.build/" class="icon-1"
+      ><AstroLogo /></a
+    >
+  </div>
+</footer>
+
+<style>
+  .footer {
+    --text: var(--ctp-mocha-text);
+    --subtext: var(--ctp-mocha-subtext0);
+    --surface: var(--ctp-mocha-surface0);
+    --crust: var(--ctp-mocha-crust);
+    --mantle: var(--ctp-mocha-mantle);
+    --base: var(--ctp-mocha-base);
+    --green: var(--ctp-mocha-green);
+    --blue: var(--ctp-mocha-blue);
+    --sky: var(--ctp-mocha-sky);
+    --yellow: var(--ctp-mocha-yellow);
+    background-color: var(--crust);
+    /* border-top: 2px solid rgb(var(--text-rgb) / 0.5); */
+    /* filter: drop-shadow(0 -3px 3px rgb(var(--text-rgb) / 0.2)); */
+    color: var(--ctp-mocha-text);
+  }
+
+  svg {
+    color: var(--ctp-mocha-green);
+    transition: color 0.2s ease-in-out;
+  }
+
+  a svg:hover {
+    color: var(--ctp-mocha-yellow);
+    transition: color 0.2s ease-in-out;
+  }
+</style>

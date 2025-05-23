@@ -1,0 +1,27 @@
+---
+
+---
+
+<div class="container screen-grid">
+  <slot />
+</div>
+
+<style lang="scss">
+  .screen-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    align-content: start;
+
+    gap: 3rem;
+    height: 100%;
+    width: 85rem;
+    @media (max-width: 90rem) {
+      width: 55rem;
+    }
+    @media (max-width: 60rem) {
+      width: calc(min(100vw, 40rem));
+    }
+  }
+</style>

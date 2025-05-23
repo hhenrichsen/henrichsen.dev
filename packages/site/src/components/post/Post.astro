@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../core/BaseLayout.astro";
+import Date from "../core/Date.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <article class="container shadow">
+    <a href={`/${frontmatter.type}`}>{`< ${frontmatter.type}`}</a>
+    <h1>{frontmatter.title}</h1>
+    <div class="details">
+      {frontmatter.growth && (
+        <span class="growth">{frontmatter.growth}</span>
+        <span class="separator">⋄</span>
+      )}
+      <span class="date">posted <Date date={frontmatter.date} /></span>
+      {frontmatter.updated && (
+        <>
+          <span class="separator">⋄</span>
+          <span class="updated">last updated <Date date={frontmatter.updated} /></span>
+        </>
+      )}
+    </div>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: 2rem;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: calc(min(100vw, 80ch));
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--surface);
+    margin: 2rem 0;
+    border: 2px solid rgb(var(--text-rgb) / 0.5);
+  }
+
+  .details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  :global(p) {
+    margin: 0.5rem 0;
+    margin-bottom: 1rem;
+  }
+
+  :global(.expressive-code) {
+    width: 100%;
+  }
+
+  :global(.expressive-code:not(:last-child)) {
+    margin-bottom: 2rem;
+  }
+
+  :global(img) {
+    max-width: 100%;
+    border-radius: 0.5rem;
+  }
+</style>

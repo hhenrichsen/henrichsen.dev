@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../core/BaseLayout.astro";
+import Date from "../core/Date.astro";
+import ScreenGrid from "../layout/ScreenGrid.astro";
+import HoverItem from "../layout/HoverItem.astro";
+const { posts, title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="title">
+    <h1>{title}</h1>
+  </div>
+  <ScreenGrid>
+    {
+      posts.map((post) => (
+        <HoverItem href={`/${post.data.type}/${post.id}`}>
+            <h2>{post.data.title}</h2>
+            {post.data.description && <p>{post.data.description}</p>}
+            <div class="details">
+              {post.data.growth && (
+                <span class="growth">{post.data.growth}</span>
+                <span class="separator">⋄</span>
+              )}
+              <Date date={post.data.date} />
+            </div>
+        </HoverItem>
+      ))
+    }
+  </ScreenGrid>
+</BaseLayout>
+
+<style lang="scss">
+  .title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    width: 85rem;
+    @media (max-width: 90rem) {
+      width: 55rem;
+    }
+    @media (max-width: 60rem) {
+      width: calc(min(100vw, 40rem));
+    }
+  }
+
+  .details {
+    font-style: italic;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+</style>

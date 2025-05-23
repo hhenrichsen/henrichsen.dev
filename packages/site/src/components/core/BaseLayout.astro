@@ -1,0 +1,43 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+
+import "../../styles/catppuccin.css";
+import "../../styles/global.css";
+import "../../../../../fonts/fonts.css";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {
+      title ? (
+        <title>{title} | Hunter Henrichsen</title>
+      ) : (
+        <title>Hunter Henrichsen</title>
+      )
+    }
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer class="container col footer" />
+  </body>
+</html>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../components/core/BaseLayout.astro";
+import HoverItem from "../components/layout/HoverItem.astro";
+import ScreenGrid from "../components/layout/ScreenGrid.astro";
+---
+
+<BaseLayout>
+  <div class="title">
+    <h1>
+      <strong>Hunter</strong> makes guides, animations, and practical learning material.
+    </h1>
+    <p>
+      Software engineer, educator, and writer <span class="faded-1"
+        >and artist</span
+      ><span class="faded-2"> and designer</span>
+    </p>
+    <p>
+      Currently managing engineers at <a href="https://lucid.co"
+        >Lucid Software</a
+      >
+    </p>
+  </div>
+  <ScreenGrid>
+    <HoverItem href="/blog">
+      <h2>Blog</h2>
+      <p>Opinionated and personal thoughts on whatever I'm currently doing.</p>
+    </HoverItem>
+    <HoverItem href="/guide">
+      <h2>Guides</h2>
+      <p>
+        Guides and tutorials for various projects. Normally informative and not
+        opinionated.
+      </p>
+    </HoverItem>
+    <HoverItem href="/lecture">
+      <h2>Lecture Notes</h2>
+      <p>Lecture material from my courses.</p>
+    </HoverItem>
+    <HoverItem href="/fiction">
+      <h2>Fiction</h2>
+      <p>
+        Short stories and other creative writing, including works from school.
+      </p>
+    </HoverItem>
+    <HoverItem href="/reading">
+      <h2>Reading</h2>
+      <p>Articles and books I've read, as a little reading log.</p>
+    </HoverItem>
+    <HoverItem href="/scraps">
+      <h2>Scraps</h2>
+      <p>Random thoughts and ideas.</p>
+    </HoverItem>
+  </ScreenGrid>
+</BaseLayout>
+
+<style lang="scss">
+  article {
+    display: block;
+    color: var(--text);
+    width: 25rem;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .title {
+    .faded-1 {
+      color: rgb(var(--text-rgb) / 0.6);
+    }
+
+    .faded-2 {
+      color: rgb(var(--text-rgb) / 0.3);
+    }
+
+    margin-bottom: 2rem;
+    h1 {
+      font-weight: 400;
+      font-size: 4rem;
+      max-width: 85rem;
+      margin: 4rem 0 2rem 0;
+      @media (max-width: 90rem) {
+        max-width: 60rem;
+        font-size: 3rem;
+      }
+      @media (max-width: 60rem) {
+        max-width: calc(min(100vw, 40rem));
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 2rem;
+      @media (max-width: 90rem) {
+        font-size: 1.5rem;
+      }
+      @media (max-width: 60rem) {
+        font-size: 1rem;
+      }
+    }
+  }
+</style>

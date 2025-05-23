@@ -1,0 +1,35 @@
+---
+const { href } = Astro.props;
+---
+
+<a href={href}>
+  <article>
+    <slot />
+  </article>
+</a>
+
+<style lang="scss">
+  a {
+    width: calc(min(25rem, 100vw));
+  }
+
+  article {
+    display: block;
+    color: var(--text);
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent;
+    will-change: transform, box-shadow, border-color;
+    page-break-inside: avoid;
+
+    &:hover {
+      transform: scale3d(1.02, 1.02, 1.02);
+      box-shadow: 0 5px 5px 0 rgb(var(--text-rgb) / 0.2);
+      border: 2px solid rgb(var(--text-rgb) / 0.5);
+      h2 {
+        color: var(--green);
+      }
+    }
+  }
+</style>

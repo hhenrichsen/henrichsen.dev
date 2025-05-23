@@ -1,0 +1,21 @@
+---
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
+const { formula = '', displayMode = false } = Astro.props;
+const html = katex.renderToString(formula, { displayMode });
+---
+
+<div class="math" data-formula={formula} data-display-mode={displayMode}>
+    <span set:html={html}></span>
+</div>
+
+<style>
+    .math {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+    }
+</style>

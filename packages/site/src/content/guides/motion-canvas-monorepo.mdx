@@ -1,0 +1,90 @@
+---
+title: "A Motion Canvas Monorepo for Presentations"
+date: 2024-01-03T20:00:00-07:00
+updated: 2024-01-03T20:00:00-07:00
+draft: false
+type: "guide"
+growth: "sprout"
+tags:
+ - typescript
+ - motion-canvas
+---
+
+To start off, I'm going to be using `pnpm` for this due to its workspace 
+feature. There are other ways to do this, but `pnpm` has been my favorite
+so far and it seems to work for what I'm trying to do here.
+
+If you do not already have pnpm installed, but already have Node installed you
+can run the following command to install pnpm:
+
+```bash
+corepack enable
+```
+
+Now make a folder and initialize a new project:
+
+```bash
+mkdir my-animation
+pnpm init
+```
+
+I'm going to create two outputs; one to just play the animation, and one to
+play the animation as a presentation. That needs to be in a separate project
+in order to build the animation properly, so I'm going to add a folder for it:
+
+```bash
+mkdir web
+```
+
+And create a new animation in the animations folder. I found I didn't need the
+ffmpeg exporter for what I was doing, but you can use what you please:
+
+```bash
+npm create @motion-canvas@latest -- --name animations --path ./animations --language ts
+cd animations
+pnpm i
+```
+
+I'm going to add both to my pnpm workspace so that they can resolve each other:
+
+```yaml title="pnpm-workspace.yaml"
+packages:
+  - "./animations"
+  - "./web"
+```
+
+Now I'm going to add some animations and projects to my animations project:
+
+```bash
+cd animations/src/scenes
+touch circle.tsx
+touch square.tsx
+cd ..
+touch circle-project.tsx
+touch square-project.tsx
+```
+
+Next I'll add a dependency on `glob` so that I can resolve all of the projects
+at once in the animations' `vite.config.ts`:
+
+```bash
+pnpm i -S glob
+```
+
+Then I'll make some changes to the `vite.config.ts` to automatically find all
+of the projects in the `src/projects` folder. Each one will need to contain
+their own project.:
+
+```ts {7-9} title="animations/vite.config.ts"
+import { defineConfig } from "vite";
+import motionCanvas from "@motion-canvas/vite-plugin";
+import { globSync } from "glob";
+
+export default defineConfig({
+  plugins: [
+    motionCanvas({
+      project: globSync("./src/*project.ts"),
+    }),
+  ],
+});
+

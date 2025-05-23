@@ -1,0 +1,158 @@
+:root {
+  --text: var(--ctp-latte-text);
+  --subtext: var(--ctp-latte-subtext0);
+  --surface: var(--ctp-latte-surface0);
+  --crust: var(--ctp-latte-crust);
+  --mantle: var(--ctp-latte-mantle);
+  --base: var(--ctp-latte-base);
+  --green: var(--ctp-latte-green);
+  --blue: var(--ctp-latte-blue);
+  --sky: var(--ctp-latte-sky);
+  --yellow: var(--ctp-latte-yellow);
+  --text-rgb: var(--ctp-latte-text-rgb);
+
+  font-size: 16px;
+  font-family: "Addington CF", serif;
+  color: var(--text);
+
+  height: 100%;
+  width: 100%;
+
+  background-color: var(--mantle);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+
+:root.dark {
+  --text: var(--ctp-mocha-text);
+  --subtext: var(--ctp-mocha-subtext0);
+  --surface: var(--ctp-mocha-surface0);
+  --crust: var(--ctp-mocha-crust);
+  --mantle: var(--ctp-mocha-mantle);
+  --base: var(--ctp-mocha-base);
+  --green: var(--ctp-mocha-green);
+  --blue: var(--ctp-mocha-blue);
+  --sky: var(--ctp-mocha-sky);
+  --yellow: var(--ctp-mocha-yellow);
+  --text-rgb: var(--ctp-mocha-text-rgb);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div,
+li,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  margin: 0;
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--yellow);
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.container {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.gaps {
+  gap: 1rem;
+}
+
+.gaps-small {
+  gap: 0.5rem;
+}
+
+.container.row {
+  flex-direction: row;
+}
+
+.container.col.full {
+  flex-grow: 1;
+}
+
+.container.col {
+  flex-direction: column;
+}
+
+.container.col .spacer-v {
+  flex-grow: 1;
+}
+
+.container.row .spacer-h {
+  flex-grow: 1;
+}
+
+.shadow {
+  filter: drop-shadow(0 3px 3px rgb(var(--text-rgb) / 0.2));
+}
+.icon-2 {
+  width: 2rem;
+  height: 2rem;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.icon-1 {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+table {
+  margin: 0.5rem;
+}
+
+td {
+  padding: 0.25rem;
+}
+
+tr {
+  border-bottom: 1px solid var(--text);
+}

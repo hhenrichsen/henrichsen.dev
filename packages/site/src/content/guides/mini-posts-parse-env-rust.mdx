@@ -1,0 +1,103 @@
+---
+title: "Mini Post: Parsing Environment Variables Safely in Rust"
+date: 2023-08-03T19:27:28-06:00
+updated: 2023-08-03T19:27:28-06:00
+draft: false
+type: "guide"
+growth: "bloom"
+tags:
+ - Rust
+ - Minipost
+---
+
+Almost every app I write nowadays uses an environment file, and therefore I 
+always have to read things from the environment and parse them into different
+forms. Doing this safely with defaults in Rust was a bit tricky for me at first,
+but I've landed on a solution I like.
+
+## Optional Numbers
+The reason I was looking for code like this was to try and get a port for a
+database from the environment with a reasonable fallback. Here's what I landed
+on:
+
+```rust title="main.rs"
+use std::env;
+use dotenv::dotenv;
+
+fn main() {
+    dotenv().ok();
+    let count = env::var("COUNT")
+        // convert to Option<String>
+        .ok() 
+        // convert to Option<u64> via parse
+        .and_then(|value| value.parse::<u64>().ok())
+        // Use 5 as a default if either the value was not found or it could
+        // not be converted.
+        .unwrap_or(5)
+    
+    println!("{}", count * 5);
+}
+```
+
+## Default Strings
+Of course, you can always just get a required value like this:
+
+```rust title="main.rs"
+std::env;
+use dotenv::dotenv;
+
+fn main() {
+    dotenv().ok();
+    let test = env::var("TEST")
+        .unwrap_or(String::from("Test"));
+    
+    println!("{}", test);
+}
+```
+
+## Required Environment Variables
+And of course, you can make them required by just `unwrap`ing them, but that
+will crash your program:
+
+```rust title="main.rs" showLineNumbers
+std::env;
+use dotenv::dotenv;
+
+fn main() {
+    dotenv().ok();
+    let test = env::var("TEST").unwrap();
+    
+    println!("{}", test);
+}
+```
+
+```console
+thread 'main' panicked at src\main.rs:6:35:
+called `Result::unwrap()` on an `Err` value: NotPresent
+```
+
+You can instead print a helpful message:
+
+```rust title="main.rs" showLineNumbers
+std::env;
+use dotenv::dotenv;
+
+fn main() {
+    dotenv().ok();
+    let test = env::var("TEST");
+    
+    match test {
+        Ok(test) => {
+            println!("{}", test)
+        }
+        Err(_) => {
+            eprintln!("Missing required environment variable 'TEST'");
+            return;
+        }
+    }
+}
+```
+
+```console
+Missing required environment variable 'TEST'
+```

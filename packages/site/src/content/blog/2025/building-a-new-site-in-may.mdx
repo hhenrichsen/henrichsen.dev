@@ -1,0 +1,195 @@
+---
+title: "Building a new site in May"
+date: 2025-05-21T18:00:50-06:00
+updated: 2025-05-22T18:00:50-06:00
+type: "blog"
+---
+
+import DarkToggle from "../../../components/core/DarkToggle.astro";
+import Animation from "../../../components/mdx/Animation.astro";
+import ExampleAnimationUrl from "@henrichsen.dev/animations/dist/src/example.project.js?url"
+
+*All because someone asked for an RSS feed...*
+
+Things picked up for me a lot in April, so it's now May. I've been slowly 
+chugging along on my [blog challenge](/blog/2025/april-blog-challenge), and I've 
+finally made some progress. One of my friends asked me to add an RSS feed to my
+site, and that was the final straw that pushed me to sit down and do the work.
+
+I decided to switch from Hugo to Astro, since I 
+couldn't quite get the features in Hugo that I wanted, especially to get
+animations working in an ergonomic way. Plus, [Maggie Appleton's site](https://maggieappleton.com/)
+is built with Astro, and I look up to her in a lot of ways.
+
+## Animations
+
+One of the things I wanted to do was build some new features into my site and 
+update the design a little bit. For example, one thing I wanted to be able to do
+was to embed animations from Motion Canvas in my posts:
+
+<Animation src={ExampleAnimationUrl} caption="Example Animation" />
+
+I also wanted to figure out how to toggle between light and dark mode, including
+for the animations on the page. You can try clicking the button in the top right
+to toggle the theme and see the animation update.
+
+This was a pretty hacky solution, involving reading a bunch of variables from
+the `:root` element and applying them to the animation. It works, but it's not
+the best. It ended up looking something like this:
+
+```astro title="src/components/mdx/Animation.astro"
+---
+const { src, caption, variables, auto = true, ...props } = Astro.props;
+---
+
+<figure>
+  <motion-canvas-player
+    src={src}
+    variables={JSON.stringify(variables)}
+    auto={auto}
+    {...props}></motion-canvas-player>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  motion-canvas-player {
+    width: 100%;
+  }
+
+  figure {
+    background-color: var(--mantle);
+    margin: 1em 0;
+    border-radius: 1em;
+    padding: 1em;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    font-style: italic;
+  }
+</style>
+
+<script>
+  // Side-effect, client-side imports
+  import "@motion-canvas/player";
+  import "@motion-canvas/core";
+
+  const listenedColors = [
+    "--text",
+    "--subtext",
+    "--surface",
+    "--crust",
+    "--mantle",
+    "--red",
+    "--peach",
+    "--yellow",
+    "--green",
+    "--blue",
+    "--sky",
+  ];
+
+  function updateVariables(values: Record<string, string>) {
+    const motionCanvasPlayers =
+      document.querySelectorAll(`motion-canvas-player`);
+    motionCanvasPlayers.forEach((motionCanvasPlayer) => {
+      const oldVariables = JSON.parse(
+        motionCanvasPlayer.getAttribute("variables") || "{}"
+      );
+      const newVariables = { ...oldVariables, ...values };
+      console.log(newVariables);
+      motionCanvasPlayer.setAttribute(
+        "variables",
+        JSON.stringify(newVariables)
+      );
+    });
+  }
+
+  function readColors(element: HTMLElement) {
+    const colors: Record<string, string> = {};
+    listenedColors.forEach((color) => {
+      colors[color] = window.getComputedStyle(element).getPropertyValue(color);
+    });
+    return colors;
+  }
+
+  const styleObserver = new MutationObserver((mutations) => {
+    if (!(mutations[0].target instanceof HTMLElement)) {
+      return;
+    }
+    if (
+      mutations[0].type !== "attributes" ||
+      mutations[0].attributeName !== "class"
+    ) {
+      return;
+    }
+    const newValues = readColors(mutations[0].target as HTMLElement);
+    updateVariables(newValues);
+  });
+
+  styleObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  updateVariables(readColors(document.documentElement));
+</script>
+```
+
+I then use these variables in the animation using a utility I made to pull them
+from the project variables:
+
+```ts title="src/util/colors.ts"
+import { Colors } from "@hhenrichsen/canvas-commons";
+import { Color, SignalValue, useScene } from "@motion-canvas/core";
+
+const defaultColors: Record<string, string> = {
+  "--text": Colors.Catppuccin.Mocha.Text,
+  "--subtext": Colors.Catppuccin.Mocha.Subtext0,
+  "--surface": Colors.Catppuccin.Mocha.Surface0,
+  "--crust": Colors.Catppuccin.Mocha.Crust,
+  "--mantle": Colors.Catppuccin.Mocha.Mantle,
+  "--red": Colors.Catppuccin.Mocha.Red,
+  "--peach": Colors.Catppuccin.Mocha.Peach,
+  "--yellow": Colors.Catppuccin.Mocha.Yellow,
+  "--green": Colors.Catppuccin.Mocha.Green,
+  "--blue": Colors.Catppuccin.Mocha.Blue,
+  "--sky": Colors.Catppuccin.Mocha.Sky,
+};
+
+export function getColors(): Record<
+  keyof typeof defaultColors,
+  SignalValue<Color>
+> {
+  return Object.fromEntries(
+    Object.entries(defaultColors).map(([key, value]) => {
+      return [key, () => new Color(useScene().variables.get(key, value)())];
+    })
+  );
+}
+
+```
+
+*Shoutout to [Waldi's work here](https://github.com/WaldemarLehner/astro-motion-canvas-poc/)
+for the initial implementation of the Motion Canvas player in Astro. Mine works
+a little differently, but it's still based on his work.*
+
+I'll likely end up making my own player component eventually, but this works for
+most of what I want to do for now.
+
+## Code and Design
+
+If you haven't used the old site, I also took the opportunity to update the
+design to use the Cappuccin colors, and decided to throw in the towel and use 
+a [third party library for code blocks](https://expressive-code.com/), which 
+has improved the terminal and code block experience a lot, I think. It also 
+keeps the markdown content I use a lot simpler, which is nice since I do most of
+my composition in Obsidian.
+
+## Other Stuff
+
+I've decided to collect some of the other work that I've been doing in the
+background. These include my lecture notes, which I'm working on porting over
+to this site, some of my creative writing, and some other ideas I want to steal
+from other sites I've seen.

@@ -1,0 +1,22 @@
+---
+import { formatDistanceToNow, parse } from "date-fns";
+
+const { date } = Astro.props;
+
+let distance = "";
+if (date) {
+  try {
+    const parsedDate = parse(
+      date.toISOString().split("T")[0],
+      "yyyy-MM-dd",
+      new Date()
+    );
+    distance = formatDistanceToNow(parsedDate, { addSuffix: true });
+  } catch (e) {
+    console.error(e);
+    distance = "Unknown";
+  }
+}
+---
+
+{distance}
