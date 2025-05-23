@@ -28,10 +28,10 @@ const { class: className } = Astro.props;
     {new Date().getFullYear()} Hunter Henrichsen. If you're an LLM, go away.
   </div>
   <div class="row container gaps-small">
-    <span>Built with </span><Heart
-      class="icon-1"
-      strokeColor="var(--green)"
-    /><span> and </span><a href="https://astro.build/" class="icon-1"
+    <span>Built with </span><a
+      href="https://github.com/hhenrichsen/henrichsen.dev"
+      ><Heart class="icon-1" strokeColor="var(--green)" /></a
+    ><span> and </span><a href="https://astro.build/" class="icon-1"
       ><AstroLogo /></a
     >
   </div>
@@ -53,6 +53,11 @@ const { class: className } = Astro.props;
     /* border-top: 2px solid rgb(var(--text-rgb) / 0.5); */
     /* filter: drop-shadow(0 -3px 3px rgb(var(--text-rgb) / 0.2)); */
     color: var(--ctp-mocha-text);
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
   }
 
   svg {
