@@ -20,7 +20,12 @@ const { posts, title } = Astro.props;
             {post.data.description && <p>{post.data.description}</p>}
             <div class="details">
               {post.data.growth && (
-                <span class="growth">{post.data.growth}</span>
+                <>
+                  <svg class="icon">
+                    <use href={`/img/icons.svg#${post.data.growth}-icon`} />
+                  </svg>
+                  <span class="growth">{post.data.growth}</span>
+                </>
                 <span class="separator">⋄</span>
               )}
               <Date date={post.data.date} />
@@ -56,6 +61,13 @@ const { posts, title } = Astro.props;
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  :global(svg.icon) {
+    width: 1rem;
+    height: 1rem;
   }
 
 </style>
