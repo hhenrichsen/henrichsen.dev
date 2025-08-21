@@ -51,9 +51,7 @@ same stack.
 
 ## Syllabus Overview
 
-You all are free and encouraged to call me Hunter. You can reach my by email at
-hunter.henrichsen@gmail.com, or I am also on the Sandbox slack. I prefer Slack,
-but will stay on top of both during the week.
+You all are free and encouraged to call me Hunter.
 
 For office hours I'm planning on doing open office hours where anyone can drop
 in from 6 to 8 PM on Tuesday and Thursdays, and Calendly for anything else,

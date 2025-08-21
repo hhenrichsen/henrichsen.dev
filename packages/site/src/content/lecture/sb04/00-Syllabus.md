@@ -56,7 +56,6 @@ type: "lecture"
 
 - Lecture notes: https://github.com/hhenrichsen/sandbox-2024-lecture-notes
 - Office Hours: https://calendly.com/hhenrichsen
-- Contact Email: hunter.henrichsen@byu.edu
 
 ## Communication
 
