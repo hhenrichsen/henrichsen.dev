@@ -22,7 +22,7 @@ type: "lecture"
 
 - LearningSuite is published; I forgot to hit publish last week but it's open as
   of Monday.
-- Please use hhenrich@byu.edu to communicate with me over email; the university
+- Please use my university email to communicate with me over email; the university
   has asked that all email communications I do with you all are done via that
   email.
 

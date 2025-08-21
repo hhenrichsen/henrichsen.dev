@@ -26,8 +26,6 @@ type: "lecture"
       - [Check-in 1 (October 11th, 2024)](#check-in-1-october-11th-2024)
       - [Check-in 2 (December 18th, 2024)](#check-in-2-december-18th-2024)
   - [Honor Code](#honor-code)
-  - [Preventing \& Responding to Sexual Misconduct](#preventing--responding-to-sexual-misconduct)
-  - [Student Disability](#student-disability)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -233,62 +231,3 @@ effective learning and working environment. It is the university's expectation,
 and every instructor's expectation in class, that each student will abide by all
 Honor Code standards. Please call the Honor Code Office at 422-2847 if you have
 questions about those standards.
-
-## Preventing & Responding to Sexual Misconduct
-
-_The health and well-being of students is of paramount importance at Brigham
-Young University.  If you or someone you know has experienced sexual harassment
-(including sexual violence), there are many resources available for assistance._
-
-In accordance with Title IX of the Education Amendments of 1972, BYU prohibits
-unlawful sex discrimination, including sexual harassment, against any
-participant in its education programs or activities. The university also
-prohibits sexual harassment by its personnel and students. Sexual harassment
-occurs when
-
-- a person is subjected to unwelcome sexual speech or conduct so severe,
-  pervasive, and offensive that it effectively denies their ability to access
-  any BYU education program or activity;
-- any aid, benefit, or service of BYU is conditioned on a person's participation
-  in unwelcome sexual conduct; or
-- a person suffers sexual assault, dating violence, domestic violence, or
-  stalking on the basis of sex.
-
-University policy requires all faculty members to promptly report incidents of
-sexual harassment that come to their attention in any way, including through
-face-to-face conversations, a written class assignment or paper, class
-discussion, email, text, or social media post. Incidents of sexual harassment
-should be reported to the Title IX Coordinator
-at [t9coordinator@byu.edu](mailto:t9coordinator@byu.edu) or (801) 422-8692 or
-1085 WSC. Reports may also be submitted online
-at [https://titleix.byu.edu/report](https://titleix.byu.edu/report) or
-1-888-238-1062 (24-hours a day).
-
-BYU offers confidential resources for those affected by sexual harassment,
-including the university's Sexual Assault Survivor Advocate, as well as a number
-of non-confidential resources and services that may be helpful. Additional
-information about Title IX, the
-university's [Sexual Harassment Policy](https://policy.byu.edu/view/index.php?p=155&s=s879),
-reporting requirements, and resources can be found
-at [http://titleix.byu.edu](http://titleix.byu.edu/) or by contacting the
-university's Title IX Coordinator.
-
-## Student Disability
-
-Brigham Young University is committed to providing a working and learning
-atmosphere that reasonably accommodates qualified persons with disabilities. A
-disability is a physical or mental impairment that substantially limits one or
-more major life activities. Whether an impairment is substantially limiting
-depends on its nature and severity, its duration or expected duration, and its
-permanent or expected permanent or long-term impact. Examples include vision or
-hearing impairments, physical disabilities, chronic illnesses, emotional
-disorders (e.g., depression, anxiety), learning disorders, and attention
-disorders (e.g., ADHD). If you have a disability which impairs your ability to
-complete this course successfully, please contact the University Accessibility
-Center (UAC), 2170 WSC or 801-422-2767 to request a reasonable accommodation.
-The UAC can also assess students for learning, attention, and emotional
-concerns. If you feel you have been unlawfully discriminated against on the
-basis of disability, please contact the Equal Opportunity Office at
-801-422-5895, [eo_manager@byu.edu](mailto:eo_manager@byu.edu), or
-visit [https://hrs.byu.edu/equal-opportunity](https://hrs.byu.edu/equal-opportunity) for
-help.”
