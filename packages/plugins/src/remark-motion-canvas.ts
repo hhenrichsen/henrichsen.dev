@@ -167,7 +167,7 @@ export function isMotionCanvasBlock(node: Code): boolean {
   if (node.lang === "motion-canvas") {
     return true;
   }
-  if (node.meta?.includes("motion-canvas")) {
+  if (node.meta && /(?:^|\s)motion-canvas(?:\s|$)/.test(node.meta)) {
     return true;
   }
   return false;

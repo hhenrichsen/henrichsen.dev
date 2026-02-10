@@ -42,4 +42,15 @@ describe("isMotionCanvasBlock", () => {
       isMotionCanvasBlock(makeCode({ lang: "ts", meta: 'title="Foo"' })),
     ).toBe(false);
   });
+
+  it("rejects block with motion-canvas as substring in meta", () => {
+    expect(
+      isMotionCanvasBlock(
+        makeCode({
+          lang: "ts",
+          meta: 'title="packages/plugins/src/remark-motion-canvas.ts"',
+        }),
+      ),
+    ).toBe(false);
+  });
 });
