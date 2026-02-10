@@ -8,7 +8,7 @@ import "../../../../../fonts/fonts.css";
 import { ClientRouter } from "astro:transitions";
 
 const { title, description = "", image = "og.png" } = Astro.props;
-const img = new URL("/img/" + image || "og.png", Astro.url).toString();
+const img = new URL("/img/" + image, Astro.url).toString();
 ---
 
 <html
@@ -86,4 +86,6 @@ const img = new URL("/img/" + image || "og.png", Astro.url).toString();
       e.newDocument.documentElement.classList.remove("dark");
     }
   });
+
+  import("../../motion-canvas/runtime");
 </script>

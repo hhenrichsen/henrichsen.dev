@@ -1,10 +1,10 @@
 ---
-import { Sun, Moon } from "astro-feather-icons";
+import FeatherIcon from "./FeatherIcon.astro";
 ---
 
 <button class="themeToggle">
-  <Sun class="icon-2 sun" />
-  <Moon class="icon-2 moon" />
+  <span class="sun"><FeatherIcon name="sun" class="icon-2" /></span>
+  <span class="moon"><FeatherIcon name="moon" class="icon-2" /></span>
 </button>
 
 <style>

@@ -8,6 +8,8 @@ import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import pagefind from "astro-pagefind";
+import { remarkMotionCanvas } from "@henrichsen.dev/plugins/remark";
+import { viteMotionCanvasPlugin } from "@henrichsen.dev/plugins/vite";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +17,11 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  vite: {
+    plugins: [viteMotionCanvasPlugin()],
+  },
   markdown: {
+    remarkPlugins: [remarkMotionCanvas],
     rehypePlugins: [
       rehypeSlug,
       [

@@ -1,9 +1,9 @@
 ---
 import DarkToggle from "./DarkToggle.astro";
-import { Circle, Search } from "astro-feather-icons";
+import FeatherIcon from "./FeatherIcon.astro";
 ---
 
-<header transition:persist="" transition:name="header">
+<header class="ctp-mocha-override" transition:persist="" transition:name="header">
   <div class="container row gaps">
     <a href="/" class="container row gaps">
       <img src="/img/logo.png" alt="Hunter Henrichsen" class="avatar" />
@@ -11,28 +11,16 @@ import { Circle, Search } from "astro-feather-icons";
     </a>
     <div class="spacer-h"></div>
     <a href="/search">
-      <Search class="icon-2" />
+      <FeatherIcon name="search" class="icon-2" />
     </a>
     <DarkToggle />
-    <Circle class="icon-2" />
+    <FeatherIcon name="circle" class="icon-2" />
   </div>
 </header>
 
 <style>
   header {
-    --text: var(--ctp-mocha-text);
-    --subtext: var(--ctp-mocha-subtext0);
-    --surface: var(--ctp-mocha-surface0);
-    --crust: var(--ctp-mocha-crust);
-    --mantle: var(--ctp-mocha-mantle);
-    --base: var(--ctp-mocha-base);
-    --green: var(--ctp-mocha-green);
-    --blue: var(--ctp-mocha-blue);
-    --sky: var(--ctp-mocha-sky);
-    --yellow: var(--ctp-mocha-yellow);
     background-color: var(--crust);
-    /* border-bottom: 2px solid rgb(var(--text-rgb) / 0.5); */
-    /* filter: drop-shadow(0 3px 3px rgb(var(--text-rgb) / 0.2)); */
     color: var(--ctp-mocha-text);
   }
 
