@@ -1,0 +1,19 @@
+---
+import feather from "feather-icons";
+
+interface Props {
+  name: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { name, class: className, ...rest } = Astro.props;
+const icon = feather.icons[name];
+const svgAttrs: Record<string, string> = {};
+for (const [key, value] of Object.entries(rest)) {
+  if (typeof value === "string") svgAttrs[key] = value;
+}
+const svg = icon.toSvg({ class: className, ...svgAttrs });
+---
+
+<Fragment set:html={svg} />

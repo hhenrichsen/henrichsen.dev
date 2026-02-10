@@ -1,27 +1,20 @@
 ---
-import {
-  GitHub,
-  Linkedin,
-  Sun,
-  MessageSquare,
-  Heart,
-  Rss,
-} from "astro-feather-icons";
+import FeatherIcon from "./FeatherIcon.astro";
 import AstroLogo from "./AstroLogo.astro";
 
 const { class: className } = Astro.props;
 ---
 
-<footer class={className} transition:persist="" transition:name="footer">
+<footer class={`ctp-mocha-override ${className}`} transition:persist="" transition:name="footer">
   <div id="socials" class="container row gaps">
-    <a href="/rss.xml"><Rss class="icon-2" /></a>
+    <a href="/rss.xml"><FeatherIcon name="rss" class="icon-2" /></a>
     <a href="https://github.com/hhenrichsen" rel="me"
-      ><GitHub class="icon-2" /></a
+      ><FeatherIcon name="github" class="icon-2" /></a
     >
     <a href="https://www.linkedin.com/in/hhenrichsen/"
-      ><Linkedin class="icon-2" /></a
+      ><FeatherIcon name="linkedin" class="icon-2" /></a
     >
-    <a href="https://discord.gg/jMQ8gsF"><MessageSquare class="icon-2" /></a>
+    <a href="https://discord.gg/jMQ8gsF"><FeatherIcon name="message-square" class="icon-2" /></a>
   </div>
   <div class="row">
     <span>Copyright &copy;</span>
@@ -30,7 +23,7 @@ const { class: className } = Astro.props;
   <div class="row container gaps-small">
     <span>Built with </span><a
       href="https://github.com/hhenrichsen/henrichsen.dev"
-      ><Heart class="icon-1" strokeColor="var(--green)" /></a
+      ><FeatherIcon name="heart" class="icon-1" stroke="var(--green)" /></a
     ><span> and </span><a href="https://astro.build/" class="icon-1"
       ><AstroLogo /></a
     >
@@ -39,19 +32,7 @@ const { class: className } = Astro.props;
 
 <style>
   .footer {
-    --text: var(--ctp-mocha-text);
-    --subtext: var(--ctp-mocha-subtext0);
-    --surface: var(--ctp-mocha-surface0);
-    --crust: var(--ctp-mocha-crust);
-    --mantle: var(--ctp-mocha-mantle);
-    --base: var(--ctp-mocha-base);
-    --green: var(--ctp-mocha-green);
-    --blue: var(--ctp-mocha-blue);
-    --sky: var(--ctp-mocha-sky);
-    --yellow: var(--ctp-mocha-yellow);
     background-color: var(--crust);
-    /* border-top: 2px solid rgb(var(--text-rgb) / 0.5); */
-    /* filter: drop-shadow(0 -3px 3px rgb(var(--text-rgb) / 0.2)); */
     color: var(--ctp-mocha-text);
   }
 

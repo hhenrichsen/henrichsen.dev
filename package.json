@@ -2,11 +2,16 @@
   "name": "henrichsen.dev",
   "private": true,
   "scripts": {
-    "inst": "npm --prefix packages/animations install && npm --prefix packages/site install",
-    "build": "npm run inst && npm --prefix packages/animations run build && npm --prefix packages/site run build",
-    "dev": "concurrently -n \"animations,site\" -c \"blue.bold,green.bold\" \"npm --prefix packages/animations run watch\" \"npm --prefix packages/site run dev\""
+    "inst": "bun --cwd packages/plugins install && bun --cwd packages/site install",
+    "build": "bun run --cwd packages/site build",
+    "dev": "bun --cwd packages/site run dev",
+    "test": "bun --cwd packages/plugins run test",
+    "test:e2e": "bun --cwd packages/plugins run test:e2e"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
