@@ -6,8 +6,6 @@ type: "blog"
 ---
 
 import DarkToggle from "../../../components/core/DarkToggle.astro";
-import Animation from "../../../components/mdx/Animation.astro";
-import ExampleAnimationUrl from "@henrichsen.dev/animations/dist/src/example.project.js?url";
 
 _All because someone asked for an RSS feed..._
 
@@ -27,7 +25,21 @@ One of the things I wanted to do was build some new features into my site and
 update the design a little bit. For example, one thing I wanted to be able to do
 was to embed animations from Motion Canvas in my posts:
 
-<Animation src={ExampleAnimationUrl} caption="Example Animation" />
+```tsx motion-canvas caption="Example Animation"
+import { Circle, makeScene2D } from "@motion-canvas/2d";
+import { Color, createRef, useScene, loop, beginSlide, cancel } from "@motion-canvas/core";
+import { getColors } from "virtual:motion-canvas-colors";
+
+export default makeScene2D(function* (view) {
+  const circle = createRef<Circle>();
+  const colors = getColors();
+
+  view.add(<Circle ref={circle} size={320} fill={colors["--yellow"]} />);
+
+  yield* circle().scale(2, 2).to(1, 2);
+});
+```
+
 
 I also wanted to figure out how to toggle between light and dark mode, including
 for the animations on the page. You can try clicking the button in the top right
