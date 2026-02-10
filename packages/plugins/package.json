@@ -1,0 +1,29 @@
+{
+  "name": "@henrichsen.dev/plugins",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./remark": "./src/remark-motion-canvas.ts",
+    "./vite": "./src/vite-motion-canvas.ts",
+    "./types": "./src/types.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "unist-util-visit": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "typescript": "^5.7.3",
+    "unified": "^11.0.5",
+    "vite": "^6.3.5",
+    "@playwright/test": "^1.52.0",
+    "vitest": "^3.1.4"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0"
+  }
+}
